@@ -20,7 +20,7 @@ El sistema:
 2. Requisitos y Dependencias
 Asegúrate de tener Python 3.7+ instalado. Dentro de la carpeta del proyecto:
 
-   -  Crear un entorno virtual:
+- Crear un entorno virtual:
 
 python3 -m venv venv
 
@@ -30,7 +30,7 @@ source venv/bin/activate
 En Windows:
 venv\Scripts\activate
 
-Instalar las dependencias:
+- Instalar las dependencias:
 
 pip install -r requirements.txt
 
