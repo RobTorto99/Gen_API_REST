@@ -1,8 +1,7 @@
-# database.py
-
 import sqlite3
 from datetime import datetime
 
+# Inicializa la base de datos y crea la tabla si no existe
 def init_db():
     conn = sqlite3.connect("requests.db")
     cursor = conn.cursor()
@@ -17,6 +16,7 @@ def init_db():
     conn.commit()
     conn.close()
 
+# Inserta una nueva solicitud en la base de datos
 def insert_request(prompt: str, generated_text: str):
     conn = sqlite3.connect("requests.db")
     cursor = conn.cursor()
@@ -28,6 +28,7 @@ def insert_request(prompt: str, generated_text: str):
     conn.commit()
     conn.close()
 
+# Recupera todas las solicitudes del historial
 def get_requests():
     conn = sqlite3.connect("requests.db")
     cursor = conn.cursor()

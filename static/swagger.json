@@ -1,0 +1,129 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "version": "1.0.0",
+        "title": "Roams Back-end IA API",
+        "description": "API para generar texto basado en prompts usando GPT-2."
+    },
+    "host": "127.0.0.1:5000",
+    "basePath": "/",
+    "schemes": ["http"],
+    "paths": {
+        "/": {
+            "post": {
+                "summary": "Generar texto",
+                "description": "Genera texto basado en un prompt dado por el usuario.",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "prompt": {
+                                    "type": "string",
+                                    "example": "Hola, ¿cómo estás?"
+                                },
+                                "max_length": {
+                                    "type": "integer",
+                                    "example": 100
+                                },
+                                "temperature": {
+                                    "type": "number",
+                                    "example": 0.7
+                                },
+                                "top_p": {
+                                    "type": "number",
+                                    "example": 0.9
+                                }
+                            },
+                            "required": ["prompt"]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Éxito",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "message": {
+                                    "type": "string",
+                                    "example": "OK"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Error en los datos de entrada"
+                    },
+                    "500": {
+                        "description": "Error interno del servidor",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Error enviando el prompt: No se pudo conectar a la base de datos."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/history": {
+            "get": {
+                "summary": "Obtener historial",
+                "description": "Devuelve el historial de prompts y respuestas generadas.",
+                "responses": {
+                    "200": {
+                        "description": "Historial de solicitudes",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "history": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": { "type": "integer" },
+                                            "prompt": { "type": "string" },
+                                            "generated_text": { "type": "string" },
+                                            "created_at": { "type": "string" }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "500": {
+                        "description": "Error interno del servidor",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Error obteniendo el historial: No se pudo conectar a la base de datos."
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Solicitud malformada",
+                        "schema": {
+                            "type": "object",
+                            "properties": {
+                                "error": {
+                                    "type": "string",
+                                    "example": "Solicitud malformada. Por favor, revise los parámetros."
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
