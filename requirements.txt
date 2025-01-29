@@ -1,6 +1,4 @@
-fastapi
-uvicorn
+flask
 transformers
 torch
-pydantic
-
+flask-swagger-ui
