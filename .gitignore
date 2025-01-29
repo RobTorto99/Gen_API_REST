@@ -9,3 +9,6 @@ __pycache__/
 
 # Archivos de base de datos locales
 *.db
+
+# Archivos de log
+*.log
