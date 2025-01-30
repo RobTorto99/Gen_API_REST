@@ -1,5 +1,5 @@
 # Gen_API_REST
-Roams Back-end IA
+
 Este proyecto implementa una API REST capaz de generar texto utilizando un modelo GPT-2 descargado de Hugging Face, además de almacenar un histórico de prompts en una base de datos SQLite.
 
 1. Descripción
